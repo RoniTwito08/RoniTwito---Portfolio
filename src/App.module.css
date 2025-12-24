@@ -684,7 +684,7 @@
     padding: 10px 12px;
     font-size: 13px;
     white-space: nowrap;
-    flex: 1 1 calc(50% - 4px);
+    flex: 0 1 auto;
     min-width: 0;
   }
   .heroStat {
