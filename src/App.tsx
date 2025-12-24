@@ -26,7 +26,7 @@ export default function App() {
           <div className={styles.logo}>RT</div>
           <div className={styles.brandText}>
             <h1 className={styles.h1}>Roni Twito</h1>
-            <p className={styles.subtitle}>Full-Stack Developer | B.Sc. Computer Science | B.A. in Business Administration </p>
+            <p className={styles.subtitle}>Software Engineer | Python • Java • C++ • TypeScript • Full-Stack | B.Sc. Computer Science</p>
           </div>
         </div>
 
@@ -41,7 +41,7 @@ export default function App() {
         <section className={styles.hero}>
           <div className={styles.heroLeft}>
             <h2 className={styles.h2}>
-              I build products end-to-end — AI SaaS, social apps, and real-time systems.
+              I solve problems with code — from AI-powered SaaS and real-time systems to algorithms and backend solutions.
             </h2>
             <p className={styles.p}>
               Portfolio of selected projects with demos, source code, and key features.
@@ -92,17 +92,24 @@ export default function App() {
               <h2 className={styles.sectionTitle}>About Me</h2>
               <div className={styles.aboutText}>
                 <p>
-                  I'm a Full-Stack Developer passionate about building innovative solutions that combine AI, real-time systems, and user-focused design. With expertise in React, TypeScript, Node.js, and cloud technologies, I've crafted multiple production-grade applications from concept to deployment.
+                  I'm a Software Engineer passionate about solving complex problems through clean, scalable code. My expertise spans full-stack web development (React, TypeScript, Node.js) and core programming languages (Python, Java, C++), enabling me to approach challenges from multiple angles and contribute to diverse technical projects.
                 </p>
+              
                 <p>
-                  Currently pursuing my M.Sc. in Computer Science (starting March 2026), I blend academic rigor with practical engineering experience. I thrive in collaborative environments and love solving complex problems through clean, scalable code.
-                </p>
-                <p>
-                  I've taken my entrepreneurial ambitions to new heights—literally! I pitched my AI SaaS project <strong>Smarketing</strong> on a Shark Tank-style investment show, seeking funding to scale the platform and bring automated landing page generation with AI-powered Google Ads campaigns to market. This experience reinforced my commitment to building products that solve real business problems and create measurable impact.
+                  I've taken my entrepreneurial ambitions to new heights—literally! I pitched my AI SaaS project <strong>Smarketing</strong> on a Shark Tank-style investment show, seeking funding to scale the platform and bring automated landing page generation with AI-powered Google Ads campaigns to market. This experience reinforced my commitment to building products that create measurable impact.
                 </p>
               </div>
               
               <div className={styles.skillsGrid}>
+                <div className={styles.skillGroup}>
+                  <h3 className={styles.skillTitle}>Languages</h3>
+                  <div className={styles.skillTags}>
+                    <span className={styles.tag}>Python</span>
+                    <span className={styles.tag}>Java</span>
+                    <span className={styles.tag}>C++</span>
+                    <span className={styles.tag}>TypeScript</span>
+                  </div>
+                </div>
                 <div className={styles.skillGroup}>
                   <h3 className={styles.skillTitle}>Frontend</h3>
                   <div className={styles.skillTags}>
