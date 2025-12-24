@@ -1,8 +1,24 @@
+import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import ProjectCard from "./components/ProjectCard";
 import { projects } from "./data/projects";
 
 export default function App() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -175,6 +191,14 @@ export default function App() {
           </span>
         </footer>
       </main>
+
+      <button
+        className={`${styles.scrollToTop} ${showScrollTop ? styles.scrollToTopVisible : ""}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        ↑
+      </button>
     </div>
   );
 }
