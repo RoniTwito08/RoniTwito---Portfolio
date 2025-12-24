@@ -675,11 +675,15 @@
   .ctaRow {
     margin-top: 16px;
     gap: 8px;
+    width: 100%;
   }
   .cta,
   .ctaPrimary {
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
   }
   .heroStat {
     padding: 10px;
@@ -784,5 +788,10 @@
     height: 44px;
     bottom: 12px;
     right: 12px;
+  }
+  .cta,
+  .ctaPrimary {
+    padding: 9px 8px;
+    font-size: 12px;
   }
 }
