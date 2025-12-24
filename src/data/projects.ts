@@ -1,6 +1,14 @@
-import smarketingImg from "../assets/projects/smarketing/smarketing1.png";
-import cwcImg from "../assets/projects/cwc/cwc1.png";
-import moveoImg from "../assets/projects/moveo/moveo1.png";
+import smarketingImg1 from "../assets/projects/smarketing/smarketing1.png";
+import smarketingImg2 from "../assets/projects/smarketing/smarketing2.png";
+import smarketingImg3 from "../assets/projects/smarketing/smarketing3.png";
+import smarketingImg4 from "../assets/projects/smarketing/smarketing4.png";
+import cwcImg1 from "../assets/projects/cwc/cwc1.png";
+import cwcImg2 from "../assets/projects/cwc/cwc2.png";
+import cwcImg3 from "../assets/projects/cwc/cwc3.png";
+import cwcImg4 from "../assets/projects/cwc/cwc4.png";
+import moveoImg1 from "../assets/projects/moveo/moveo1.png";
+import moveoImg2 from "../assets/projects/moveo/moveo2.png";
+import moveoImg3 from "../assets/projects/moveo/moveo3.png";
 
 export type Project = {
   title: string;
@@ -10,6 +18,7 @@ export type Project = {
   githubUrl?: string;
   liveUrl?: string;
   imageUrl?: string;
+  images?: string[];
   featured?: boolean;
 };
 
@@ -22,7 +31,8 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Google Ads API", "AI"],
     githubUrl: "https://github.com/RoniTwito08/Smarketing-final",
     liveUrl: "",
-    imageUrl: smarketingImg,
+    imageUrl: smarketingImg1,
+    images: [smarketingImg1, smarketingImg2, smarketingImg3, smarketingImg4],
     featured: true,
   },
   {
@@ -33,7 +43,8 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Node.js", "Express","Socket.IO","Gemini API", "MongoDB","AI","image generator AI"],
     githubUrl: "https://github.com/RoniTwito08/CWC---content-with-coffee",
     liveUrl: "",
-    imageUrl: cwcImg,
+    imageUrl: cwcImg1,
+    images: [cwcImg1, cwcImg2, cwcImg3, cwcImg4],
   },
   {
     title: "Moveo-CodeBlock",
@@ -43,6 +54,7 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Socket.IO", "Monaco Editor", "Node.js", "Express", "MongoDB"],
     githubUrl: "https://github.com/RoniTwito08/Moveo-CodeBlock",
     liveUrl: "",
-    imageUrl: moveoImg,
+    imageUrl: moveoImg1,
+    images: [moveoImg1, moveoImg2, moveoImg3],
   },
 ];

@@ -1,4 +1,5 @@
 import styles from "./ProjectCard.module.css";
+import ImageCarousel from "./ImageCarousel";
 import type { Project } from "../data/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -13,7 +14,9 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className={styles.media}>
-        {project.imageUrl ? (
+        {project.images && project.images.length > 0 ? (
+          <ImageCarousel images={project.images} title={project.title} />
+        ) : project.imageUrl ? (
           <img className={styles.image} src={project.imageUrl} alt={project.title} />
         ) : (
           <div className={styles.placeholder}>Add screenshot</div>

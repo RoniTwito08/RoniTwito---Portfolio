@@ -1,0 +1,200 @@
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.lightboxContent {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 85vh;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lightboxImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: 85vh;
+  animation: zoomIn 0.4s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1001;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(99, 102, 241, 0.6);
+  transform: scale(1.1);
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1001;
+}
+
+.navButton:hover {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: rgba(99, 102, 241, 0.8);
+  transform: translateY(-50%) scale(1.15);
+}
+
+.prevButton {
+  left: -70px;
+}
+
+.nextButton {
+  right: -70px;
+}
+
+.imageInfo {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  gap: 16px;
+}
+
+.title {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.counter {
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .lightboxContent {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .prevButton {
+    left: 10px;
+    position: static;
+    position: absolute;
+    left: 10px;
+  }
+
+  .nextButton {
+    right: 10px;
+    position: static;
+    position: absolute;
+    right: 10px;
+  }
+
+  .closeButton {
+    top: 10px;
+    right: 10px;
+  }
+
+  .imageInfo {
+    bottom: -45px;
+    font-size: 12px;
+  }
+}
