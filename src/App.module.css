@@ -676,13 +676,14 @@
     margin-top: 16px;
     gap: 8px;
     width: 100%;
+    flex-wrap: wrap;
   }
   .cta,
   .ctaPrimary {
     padding: 10px 12px;
     font-size: 13px;
     white-space: nowrap;
-    flex: 1;
+    flex: 1 1 calc(50% - 4px);
     min-width: 0;
   }
   .heroStat {
@@ -793,5 +794,6 @@
   .ctaPrimary {
     padding: 9px 8px;
     font-size: 12px;
+    flex: 1 1 100%;
   }
 }

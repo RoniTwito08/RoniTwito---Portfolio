@@ -182,12 +182,7 @@ export default function App() {
         <footer className={styles.footer}>
           <span>© {new Date().getFullYear()} Roni Twito</span>
           <span className={styles.footerRight}>
-            <a className={styles.footerLink} href="https://github.com/RoniTwito08" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a className={styles.footerLink} href="https://www.linkedin.com/in/roni-twito-990349255/" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
+            
           </span>
         </footer>
       </main>
