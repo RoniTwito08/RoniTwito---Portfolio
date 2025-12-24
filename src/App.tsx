@@ -10,7 +10,7 @@ export default function App() {
           <div className={styles.logo}>RT</div>
           <div className={styles.brandText}>
             <h1 className={styles.h1}>Roni Twito</h1>
-            <p className={styles.subtitle}>Full-Stack Developer | M.Sc. CS (starting Mar 2026)</p>
+            <p className={styles.subtitle}>Full-Stack Developer | B.Sc. Computer Science | B.A. in Business Administration </p>
           </div>
         </div>
 
