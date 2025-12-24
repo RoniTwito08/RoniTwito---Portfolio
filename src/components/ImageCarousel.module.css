@@ -158,3 +158,58 @@
 .activeThumbnail img {
   transform: scale(1.15);
 }
+
+@media (max-width: 768px) {
+  .navButton {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .prevButton {
+    left: 8px;
+  }
+  .nextButton {
+    right: 8px;
+  }
+  .imageCounter {
+    bottom: 8px;
+    right: 8px;
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .thumbnail {
+    width: 50px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .carouselMain {
+    border-radius: 12px;
+  }
+  .navButton {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    backdrop-filter: blur(8px);
+  }
+  .prevButton {
+    left: 6px;
+  }
+  .nextButton {
+    right: 6px;
+  }
+  .imageCounter {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  .thumbnailRow {
+    gap: 6px;
+    padding: 6px 0;
+  }
+  .thumbnail {
+    width: 45px;
+    height: 34px;
+    border-radius: 6px;
+  }
+}
