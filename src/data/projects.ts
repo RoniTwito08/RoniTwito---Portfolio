@@ -9,6 +9,10 @@ import cwcImg4 from "../assets/projects/cwc/cwc4.png";
 import moveoImg1 from "../assets/projects/moveo/moveo1.png";
 import moveoImg2 from "../assets/projects/moveo/moveo2.png";
 import moveoImg3 from "../assets/projects/moveo/moveo3.png";
+import jobtrackerImg1 from "../assets/projects/jobtrackr/jobtrackr1.png";
+import jobtrackerImg2 from "../assets/projects/jobtrackr/jobtrackr2.png";
+import jobtrackerImg3 from "../assets/projects/jobtrackr/jobtrackr3.png";
+import jobtrackerImg4 from "../assets/projects/jobtrackr/jobtrackr4.png";
 
 export type Project = {
   title: string;
@@ -56,5 +60,17 @@ export const projects: Project[] = [
     liveUrl: "",
     imageUrl: moveoImg1,
     images: [moveoImg1, moveoImg2, moveoImg3],
+  },
+  {
+    title: "JobTrackr",
+    tagline: "Full-stack job application tracker for organized job search",
+    description:
+      "A centralized platform for job seekers to organize, manage, and monitor job applications with real-time status tracking, search functionality, and insightful analytics.",
+    tech: ["React", "TypeScript", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Google OAuth", "Axios", "CSS Modules"],
+    githubUrl: "",
+    liveUrl: "https://thejobtrackr.netlify.app",
+    imageUrl: jobtrackerImg1,
+    images: [jobtrackerImg1, jobtrackerImg2, jobtrackerImg3, jobtrackerImg4],
+    featured: true,
   },
 ];
