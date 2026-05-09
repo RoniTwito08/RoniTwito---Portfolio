@@ -93,18 +93,16 @@ export default function App() {
           <div className={styles.heroRight}>
             <div className={styles.heroCard}>
               <div className={styles.heroStat}>
-                <span className={styles.statNum}>5</span>
-                <span className={styles.statLabel}>Full-stack projects</span>
+                <span className={styles.statNum}>TV</span>
+                <span className={styles.statLabel}>Pitched on national show</span>
               </div>
               <div className={styles.heroStat}>
-                <span className={styles.statNum}>AI</span>
-                <span className={styles.statLabel}>
-                  Integrated in 3 projects
-                </span>
+                <span className={styles.statNum}>3</span>
+                <span className={styles.statLabel}>AI-powered apps built</span>
               </div>
               <div className={styles.heroStat}>
                 <span className={styles.statNum}>Live</span>
-                <span className={styles.statLabel}>Deployed on production</span>
+                <span className={styles.statLabel}>Production deployment</span>
               </div>
             </div>
           </div>
