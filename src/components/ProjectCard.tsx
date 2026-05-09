@@ -33,18 +33,20 @@ export default function ProjectCard({ project }: { project: Project }) {
         ))}
       </ul>
 
-      <div className={styles.actions}>
-        {project.githubUrl && (
-          <a className={styles.linkBtn} href={project.githubUrl} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        )}
-        {project.liveUrl && (
-          <a className={styles.primaryBtn} href={project.liveUrl} target="_blank" rel="noreferrer">
-            Live Demo
-          </a>
-        )}
-      </div>
+      {(project.githubUrl || project.liveUrl) && (
+        <div className={styles.actions}>
+          {project.githubUrl && (
+            <a className={styles.linkBtn} href={project.githubUrl} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          )}
+          {project.liveUrl && (
+            <a className={styles.primaryBtn} href={project.liveUrl} target="_blank" rel="noreferrer">
+              Live Demo
+            </a>
+          )}
+        </div>
+      )}
     </article>
   );
 }

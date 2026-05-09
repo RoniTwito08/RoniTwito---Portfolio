@@ -20,18 +20,45 @@
   height: 100%;
   object-fit: cover;
   animation: fadeIn 0.4s ease-in-out;
-  transition: transform 0.3s ease;
-  background: linear-gradient(90deg, 
-    rgba(99, 102, 241, 0.1) 0%, 
-    rgba(139, 92, 246, 0.15) 50%, 
-    rgba(99, 102, 241, 0.1) 100%
-  );
-  background-size: 200% 100%;
+  transition: transform 0.35s ease;
+  cursor: pointer;
 }
 
-.mainImage:hover {
-  transform: scale(1.02);
+.carouselMain:hover .mainImage {
+  transform: scale(1.03);
+}
+
+/* Expand hint — shown on hover */
+.expandHint {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(6, 7, 18, 0.68);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+.carouselMain:hover .expandHint {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.expandHint:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.7);
+  color: white;
 }
 
 @keyframes fadeIn {
@@ -47,18 +74,19 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(6, 7, 18, 0.62);
   border: 1px solid rgba(99, 102, 241, 0.4);
   color: white;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  transition: all 0.3s ease;
+  font-size: 24px;
+  line-height: 1;
+  transition: all 0.22s ease;
   backdrop-filter: blur(10px);
   z-index: 10;
 }

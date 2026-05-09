@@ -1,200 +1,332 @@
-.lightboxOverlay {
+/* ─────────────────────────────────────────────────────────────
+   OVERLAY  —  full-screen cinematic backdrop
+   ───────────────────────────────────────────────────────────── */
+.overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
+  inset: 0;
+  z-index: 2000;
+  background: rgba(2, 3, 14, 0.95);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
-  backdrop-filter: blur(4px);
+  gap: 14px;
+  padding: 18px 14px 14px;
+  animation: overlayIn 0.22s ease-out both;
+  cursor: zoom-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    backdrop-filter: blur(0px);
-  }
-  to {
-    opacity: 1;
-    backdrop-filter: blur(4px);
-  }
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.lightboxContent {
-  position: relative;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 85vh;
-  animation: slideUp 0.4s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.imageContainer {
-  position: relative;
+/* ─────────────────────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────────────────────── */
+.header {
   width: 100%;
-  height: 100%;
+  max-width: 1600px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 2px solid rgba(99, 102, 241, 0.3);
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.lightboxImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  max-height: 85vh;
-  animation: zoomIn 0.4s ease-out;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.closeButton {
-  position: absolute;
-  top: -45px;
-  right: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  z-index: 1001;
-}
-
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(99, 102, 241, 0.6);
-  transform: scale(1.1);
-}
-
-.navButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  z-index: 1001;
-}
-
-.navButton:hover {
-  background: rgba(99, 102, 241, 0.4);
-  border-color: rgba(99, 102, 241, 0.8);
-  transform: translateY(-50%) scale(1.15);
-}
-
-.prevButton {
-  left: -70px;
-}
-
-.nextButton {
-  right: -70px;
-}
-
-.imageInfo {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  right: 0;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  gap: 16px;
+  gap: 14px;
+  cursor: default;
+  animation: slideDown 0.3s cubic-bezier(0.34, 1.4, 0.64, 1) both;
 }
 
-.title {
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.projectName {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  background: linear-gradient(135deg, #fff 30%, #b4b8e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .counter {
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  padding: 6px 12px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 13px;
   border-radius: 999px;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.1);
 }
 
-@media (max-width: 768px) {
-  .lightboxContent {
-    width: 95%;
-    max-height: 90vh;
-  }
+.current {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(155, 158, 255, 1);
+}
+.sep {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 0 1px;
+}
+.total {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+}
 
-  .navButton {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
+.closeBtn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.25s;
+}
+.closeBtn:hover {
+  background: rgba(255, 70, 70, 0.2);
+  border-color: rgba(255, 70, 70, 0.45);
+  color: rgba(255, 140, 140, 1);
+  transform: rotate(90deg) scale(1.1);
+}
 
-  .prevButton {
-    left: 10px;
-    position: static;
-    position: absolute;
-    left: 10px;
-  }
+/* ─────────────────────────────────────────────────────────────
+   IMAGE AREA
+   The image drives the dimensions — no fixed height container.
+   max-width  → fills viewport width minus padding
+   max-height → leaves room for header + thumbnails + gaps
+   ───────────────────────────────────────────────────────────── */
+.imageArea {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  animation: popIn 0.36s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
 
-  .nextButton {
-    right: 10px;
-    position: static;
-    position: absolute;
-    right: 10px;
-  }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
 
-  .closeButton {
-    top: 10px;
-    right: 10px;
-  }
+/* Ambient indigo glow */
+.glow {
+  position: absolute;
+  inset: -80px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(99, 102, 241, 0.18) 0%,
+    rgba(139, 92, 246, 0.08) 45%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
 
-  .imageInfo {
-    bottom: -45px;
-    font-size: 12px;
-  }
+/* ── The image itself ────────────────────────────────────────
+   width: auto + height: auto  →  natural aspect ratio
+   max-width: 100%             →  never wider than imageArea
+   max-height: calc(...)       →  never taller than viewport room
+   Result: landscape screenshot = WIDE; portrait = TALL but bounded
+   ─────────────────────────────────────────────────────────── */
+.image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  /* 18px top pad + 14px bot pad + header 42px + gap×2 28px + thumbs 72px = 174px */
+  max-height: calc(100vh - 174px);
+  min-height: 180px;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.2),
+    0 32px 80px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(99, 102, 241, 0.1);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ── Slide / fade animations ─────────────────────────────── */
+@keyframes enterFromRight {
+  from { opacity: 0; transform: translateX(60px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes enterFromLeft {
+  from { opacity: 0; transform: translateX(-60px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes initialFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.enterRight { animation: enterFromRight 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.enterLeft  { animation: enterFromLeft  0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.fadeIn     { animation: initialFade    0.36s cubic-bezier(0.34, 1.4, 0.64, 1)     both; }
+
+/* ── Floating nav arrows ─────────────────────────────────── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 7, 22, 0.82);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s,
+              transform 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(16px);
+}
+.arrow:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(99, 102, 241, 0.8);
+  color: white;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 0 28px rgba(99, 102, 241, 0.5), 0 0 60px rgba(99, 102, 241, 0.2);
+}
+.prev { left: 0; }
+.next { right: 0; }
+
+/* ─────────────────────────────────────────────────────────────
+   THUMBNAIL STRIP
+   ───────────────────────────────────────────────────────────── */
+.thumbOuter {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 1600px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: default;
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.4, 0.64, 1) 0.06s both;
+}
+.thumbOuter::-webkit-scrollbar { display: none; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* inline-flex + min-width:100% → centers when fits, scrolls when overflow */
+.thumbStrip {
+  display: inline-flex;
+  min-width: 100%;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 2px 6px;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 88px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  position: relative;
+  opacity: 0.42;
+  transition: opacity 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s;
+  -webkit-user-drag: none;
+}
+.thumb:hover {
+  opacity: 0.78;
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px);
+}
+.thumb:hover img { transform: scale(1.08); }
+
+.thumbActive {
+  opacity: 1;
+  border-color: rgba(99, 102, 241, 0.95);
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.55), 0 0 44px rgba(99, 102, 241, 0.2);
+}
+.thumbActive img { transform: scale(1.05); }
+
+.thumbGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1));
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .overlay { padding: 14px 10px 12px; gap: 12px; }
+  .arrow   { width: 44px; height: 44px; }
+  .image   { max-height: calc(100vh - 168px); }
+}
+
+@media (max-width: 640px) {
+  .overlay  { padding: 12px 8px 10px; gap: 10px; }
+  .image    { max-height: calc(100vh - 158px); min-height: 140px; }
+  .arrow    { width: 38px; height: 38px; }
+  .arrow svg { width: 18px; height: 18px; }
+  .projectName { font-size: 13px; }
+  .counter  { padding: 3px 10px; }
+  .closeBtn { width: 34px; height: 34px; }
+  .thumb    { width: 68px; height: 44px; border-radius: 6px; }
+  .thumbStrip { gap: 8px; justify-content: flex-start; }
+}
+
+@media (max-width: 400px) {
+  .overlay { padding: 10px 6px 8px; }
+  .image   { max-height: calc(100vh - 148px); }
+  .thumb   { width: 58px; height: 38px; }
+  .arrow   { width: 32px; height: 32px; }
+  .counter { display: none; }
+}
+
+/* Short landscape phones */
+@media (max-height: 500px) {
+  .image  { max-height: calc(100vh - 110px); min-height: 120px; }
+  .thumb  { width: 56px; height: 36px; }
+  .thumbStrip { padding: 2px; }
+  .overlay { gap: 8px; padding: 10px 8px 8px; }
 }
