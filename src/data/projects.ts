@@ -49,6 +49,8 @@ export const projects: Project[] = [
     description:
       "An interview prep platform that simulates real technical interviews using AI. Users choose topics and difficulty levels for personalized sessions covering theory and coding questions, with session history, scores, and progress tracking.",
     tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "AI", "REST API"],
+    githubUrl: "https://github.com/RoniTwito08/DevMentor",
+
     imageUrl: devmentorImg1,
     images: [devmentorImg1, devmentorImg2, devmentorImg3, devmentorImg4, devmentorImg5],
     featured: true,
