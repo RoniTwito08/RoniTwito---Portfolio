@@ -10,7 +10,11 @@
       "Bash(Select-Object FullName)",
       "Bash(npx tsc *)",
       "Bash(npm install *)",
-      "Bash(ping -n 3 127.0.0.1)"
+      "Bash(ping -n 3 127.0.0.1)",
+      "Bash(node *)",
+      "Bash(npx playwright *)",
+      "Bash(where playwright *)",
+      "Bash(npx --yes playwright@1.60.0 --version)"
     ]
   }
 }

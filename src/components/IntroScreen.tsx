@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./IntroScreen.module.css";
 
 interface Props {
-  onEnter: () => void;
+  skipDelay?: number;
 }
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -14,7 +14,7 @@ const fadeUp = (delay: number, duration = 0.75) => ({
   transition: { delay, duration, ease },
 });
 
-export default function IntroScreen({ onEnter }: Props) {
+export default function IntroScreen({ skipDelay = 3500 }: Props) {
   const [cursorVisible, setCursorVisible] = useState(false);
 
   useEffect(() => {
@@ -77,33 +77,16 @@ export default function IntroScreen({ onEnter }: Props) {
           transition={{ delay: 2.1, duration: 0.55, ease }}
         />
 
-        <motion.div className={styles.btnWrap} {...fadeUp(2.5, 0.6)}>
-          <motion.button
-            className={styles.enterBtn}
-            onClick={onEnter}
-            whileHover={{ scale: 1.025 }}
-            whileTap={{ scale: 0.97 }}
-            aria-label="Enter portfolio"
-          >
-            <span>Enter Portfolio</span>
-            <svg
-              className={styles.arrow}
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </motion.button>
-        </motion.div>
       </div>
+
+      {/* ── Auto-enter progress bar ── */}
+      <motion.div
+        className={styles.progressBar}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: skipDelay / 1000, ease: "linear" }}
+        aria-hidden="true"
+      />
     </motion.div>
   );
 }

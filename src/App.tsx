@@ -42,6 +42,12 @@ export default function App() {
   const isFirstVisit = useRef(getInitialIntroState());
   const [showIntro, setShowIntro] = useState(isFirstVisit.current);
   const [portfolioVisible, setPortfolioVisible] = useState(!isFirstVisit.current);
+  const autoEnterTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const skipDelay = useRef(
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 1200
+      : 3500
+  ).current;
 
   /* ── Scroll-to-top button ── */
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -71,8 +77,26 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* ── Enter handler ── */
+  /* ── Auto-enter after animations complete ── */
+  useEffect(() => {
+    if (!isFirstVisit.current) return;
+    autoEnterTimerRef.current = setTimeout(() => {
+      try { sessionStorage.setItem("portfolio_entered", "1"); } catch {}
+      setShowIntro(false);
+      setTimeout(() => setPortfolioVisible(true), 180);
+    }, skipDelay);
+    return () => {
+      if (autoEnterTimerRef.current) clearTimeout(autoEnterTimerRef.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /* ── Enter handler (manual skip) ── */
   const handleEnter = () => {
+    if (autoEnterTimerRef.current) {
+      clearTimeout(autoEnterTimerRef.current);
+      autoEnterTimerRef.current = null;
+    }
     try {
       sessionStorage.setItem("portfolio_entered", "1");
     } catch {}
@@ -87,7 +111,7 @@ export default function App() {
     <>
       {/* ── Intro overlay ── */}
       <AnimatePresence>
-        {showIntro && <IntroScreen key="intro" onEnter={handleEnter} />}
+        {showIntro && <IntroScreen key="intro" skipDelay={skipDelay} />}
       </AnimatePresence>
 
       {/* ── Main portfolio ── */}
