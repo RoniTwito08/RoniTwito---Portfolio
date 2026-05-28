@@ -91,20 +91,6 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* ── Enter handler (manual skip) ── */
-  const handleEnter = () => {
-    if (autoEnterTimerRef.current) {
-      clearTimeout(autoEnterTimerRef.current);
-      autoEnterTimerRef.current = null;
-    }
-    try {
-      sessionStorage.setItem("portfolio_entered", "1");
-    } catch {}
-    setShowIntro(false);
-    // Stagger: let intro start its exit before portfolio fades in
-    setTimeout(() => setPortfolioVisible(true), 180);
-  };
-
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
