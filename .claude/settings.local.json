@@ -14,7 +14,10 @@
       "Bash(node *)",
       "Bash(npx playwright *)",
       "Bash(where playwright *)",
-      "Bash(npx --yes playwright@1.60.0 --version)"
+      "Bash(npx --yes playwright@1.60.0 --version)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
